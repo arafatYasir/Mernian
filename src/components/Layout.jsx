@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import Navbar from "./Navbar";
+import LeftSideBar from "./LeftSideBar";
 
 const Layout = () => {
     return (
@@ -9,7 +10,7 @@ const Layout = () => {
             </header>
             <div className="flex gap-8">
                 {/* leftbar */}
-                <div>sd</div>
+                <LeftSideBar />
                 <Outlet />
                 {/* rightbar */}
                 <div>sd</div>
