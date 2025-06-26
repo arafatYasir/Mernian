@@ -1,5 +1,6 @@
 import AboutMe from "../components/AboutMe";
 import Photos from "../components/Photos";
+import Posts from "../components/Posts";
 import ProfileHeader from "../components/ProfileHeader";
 import Videos from "../components/Videos";
 
@@ -14,7 +15,9 @@ const ProfilePage = () => {
                     <Photos />
                     <Videos />
                 </div>
-                <div></div>
+                <div>
+                    <Posts />
+                </div>
             </div>
         </div>
     );

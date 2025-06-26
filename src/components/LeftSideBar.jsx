@@ -9,7 +9,7 @@ import LogoutIcon from "../icons/LogoutIcon"
 
 const LeftSideBar = () => {
     return (
-        <div className="bg-white w-[300px] h-dvh">
+        <div className="bg-white w-[300px] min-h-screen">
             <div className="relative">
                 <img src="/small-cover-photo.png" alt="Cover photo" />
                 <img className="w-[110px] h-[110px] rounded-full absolute top-4 left-1/2 -translate-x-1/2 border-[5px] border-white" src="/profile-picture.png" />

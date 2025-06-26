@@ -111,8 +111,7 @@ const Videos = () => {
                         {/* Close Button */}
                         <button
                             onClick={() => setModalOpen(false)}
-                            className="absolute top-0 right-0 text-black hover:text-[#615DFA] text-3xl transition cursor-pointer"
-                            aria-label="Close"
+                            className="absolute -top-1 -right-1 text-black hover:text-[#615DFA] text-4xl transition cursor-pointer"
                         >
                             &times;
                         </button>
