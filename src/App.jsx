@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import Layout from "./components/Layout";
 import NewsfeedPage from "./pages/NewsfeedPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -7,6 +7,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/profile" />} />
         <Route path="/newsfeed" element={<NewsfeedPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/groups" element={<div>Groups</div>} />

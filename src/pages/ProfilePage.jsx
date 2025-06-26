@@ -1,7 +1,9 @@
+import ProfileHeader from "../components/ProfileHeader";
+
 const ProfilePage = () => {
     return (
-        <div>
-            This is my public profile.
+        <div className="mt-8">
+            <ProfileHeader />
         </div>
     );
 };

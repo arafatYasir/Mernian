@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet, } from "react-router";
 import Navbar from "./Navbar";
 import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";

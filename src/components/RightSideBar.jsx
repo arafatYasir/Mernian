@@ -4,10 +4,11 @@ const RightSideBar = () => {
         <div className="w-20 h-dvh bg-white flex flex-col items-center gap-[10px] mt-[10px]">
             {
                 friends.map((friend, idx) => (
-                    <div 
+                    <img 
                         key={idx}
-                        className="w-10 h-10 bg-[#4E4AC8] rounded-full border-[#D9D9D9] border-[3px]"
-                    ></div>
+                        className="w-10 h-10 rounded-full border-[#D9D9D9] border-[3px]"
+                        src="/friend.png"
+                    />
                 ))
             }
         </div>

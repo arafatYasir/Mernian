@@ -11,8 +11,8 @@ const LeftSideBar = () => {
     return (
         <div className="bg-white w-[300px] h-dvh">
             <div className="relative">
-                <img src="/cover-photo.png" alt="Cover photo" />
-                <div className="w-[110px] h-[110px] rounded-full bg-[#615DFA] absolute top-4 left-1/2 -translate-x-1/2 border-[5px] border-white"></div>
+                <img src="/small-cover-photo.png" alt="Cover photo" />
+                <img className="w-[110px] h-[110px] rounded-full absolute top-4 left-1/2 -translate-x-1/2 border-[5px] border-white" src="/profile-picture.png" />
             </div>
             <div className="mt-[75px] text-center">
                 <h4 className="text-black font-['Poppins'] font-bold">A B M Shawon Islam</h4>
