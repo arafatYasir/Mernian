@@ -22,6 +22,8 @@ import {
 const Post = ({ hasVideo, hasImage }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showReactions, setShowReactions] = useState(false);
+    const [reactionName, setReactionName] = useState(null);
+    const [reactedIcon, setReactedIcon] = useState(null);
     const dropdownRef = useRef(null);
     const timerRef = useRef(null)
 
@@ -48,6 +50,27 @@ const Post = ({ hasVideo, hasImage }) => {
         }
     ];
 
+    const reactionIcons = [
+        { icon: <LikeIcon width={20} height={20} />, label: "Like" },
+        { icon: <LoveIcon width={20} height={20} />, label: "Love" },
+        { icon: <DislikeIcon width={20} height={20} />, label: "Dislike" },
+        { icon: <HappyIcon width={20} height={20} />, label: "Happy" },
+        { icon: <FunnyIcon width={20} height={20} />, label: "Funny" },
+        { icon: <WowIcon width={20} height={20} />, label: "Wow" },
+        { icon: <AngryIcon width={20} height={20} />, label: "Angry" },
+        { icon: <SadIcon width={20} height={20} />, label: "Sad" },
+    ];
+
+    const checkAndSetIcon = (value) => {
+        if(reactedIcon === null || reactedIcon !== value) {
+            setReactedIcon(value);
+        }
+        else {
+            setReactedIcon(null);
+        }
+
+        setShowReactions(false);
+    }
 
     useEffect(() => {
         const handleCloseDropdown = (e) => {
@@ -155,9 +178,9 @@ const Post = ({ hasVideo, hasImage }) => {
                         }, 500);
                     }}
                 >
-                    <ThumbsUpIcon />
+                    {reactedIcon !== null ? <>{reactionIcons[reactedIcon].icon}</> : <ThumbsUpIcon />}
                     <span className="text-[12px] font-bold font-['Inter'] text-[#D9D9D9]">
-                        Like
+                        {reactedIcon ? <p>{reactionIcons[reactedIcon].label}</p> : <p>Like</p>}
                     </span>
 
                     {showReactions && (
@@ -165,14 +188,38 @@ const Post = ({ hasVideo, hasImage }) => {
                             className="bg-white w-[408px] h-[63px] rounded-[50px] transition absolute top-[-126px] left-[-16px] flex items-center justify-between px-[13px]"
                             style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.16)" }}
                         >
-                            <LikeIcon />
-                            <LoveIcon />
-                            <DislikeIcon />
-                            <HappyIcon />
-                            <FunnyIcon />
-                            <WowIcon />
-                            <AngryIcon />
-                            <SadIcon />
+                            <div onClick={() => checkAndSetIcon(0)} className="relative" onMouseEnter={() => setReactionName("Like")} onMouseLeave={() => setReactionName(null)}>
+                                <LikeIcon />
+                                {reactionName === "Like" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Like</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(1)} className="relative" onMouseEnter={() => setReactionName("Love")} onMouseLeave={() => setReactionName(null)}>
+                                <LoveIcon />
+                                {reactionName === "Love" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Love</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(2)} className="relative" onMouseEnter={() => setReactionName("Dislike")} onMouseLeave={() => setReactionName(null)}>
+                                <DislikeIcon />
+                                {reactionName === "Dislike" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Dislike</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(3)} className="relative" onMouseEnter={() => setReactionName("Happy")} onMouseLeave={() => setReactionName(null)}>
+                                <HappyIcon />
+                                {reactionName === "Happy" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Happy</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(4)} className="relative" onMouseEnter={() => setReactionName("Funny")} onMouseLeave={() => setReactionName(null)}>
+                                <FunnyIcon />
+                                {reactionName === "Funny" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Funny</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(5)} className="relative" onMouseEnter={() => setReactionName("Wow")} onMouseLeave={() => setReactionName(null)}>
+                                <WowIcon />
+                                {reactionName === "Wow" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Wow</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(6)} className="relative" onMouseEnter={() => setReactionName("Angry")} onMouseLeave={() => setReactionName(null)}>
+                                <AngryIcon />
+                                {reactionName === "Angry" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Angry</p>}
+                            </div>
+                            <div onClick={() => checkAndSetIcon(7)} className="relative" onMouseEnter={() => setReactionName("Sad")} onMouseLeave={() => setReactionName(null)}>
+                                <SadIcon />
+                                {reactionName === "Sad" && <p className="text-[12px] text-white font-['Poppins'] bg-[#45437F] rounded-[22px] pt-[3px] pb-[4px] px-[11px] absolute top-[-30px] left-1/2 -translate-x-1/2">Sad</p>}
+                            </div>
                         </div>
                     )}
                 </div>
