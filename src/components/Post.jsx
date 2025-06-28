@@ -125,8 +125,8 @@ const Post = ({ hasVideo, hasImage }) => {
     }, []);
 
     return (
-        <div>
-            <div className="max-w-[585px] rounded-[15px] font-['Poppins'] py-[15px] pl-4 pr-10 bg-white">
+        <div className="bg-white rounded-[15px] font-['Poppins'] ">
+            <div className="max-w-[585px]  py-[15px] pl-4 pr-10">
                 {/* Post Part */}
                 <div>
                     <div className="flex items-center justify-between">
@@ -246,7 +246,7 @@ const Post = ({ hasVideo, hasImage }) => {
             </div>
 
             {/* Post functionality Part */}
-            <div className="flex justify-between items-center border-t border-[#D9D9D9] pt-[23px] pl-[20px] pr-[45px] mt-[15px]">
+            <div className="flex justify-between bg-[#FCFCFD] items-center border-t border-[#D9D9D9] pt-[23px] pl-[20px] pr-[45px] pb-[20px]">
                 {/* Showing all the reactions on hover on like */}
                 <div
                     className="flex items-center gap-4 cursor-pointer relative"
@@ -267,7 +267,7 @@ const Post = ({ hasVideo, hasImage }) => {
 
                     {showReactions && (
                         <div
-                            className="bg-white w-[408px] h-[63px] rounded-[50px] transition absolute top-[-126px] left-[-16px] flex items-center justify-between px-[13px]"
+                            className="bg-white w-[408px] h-[63px] rounded-[50px] transition absolute top-[-127px] left-[-18px] flex items-center justify-between px-[13px] z-50"
                             style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.16)" }}
                         >
                             <div onClick={() => checkAndSetIcon(0)} className="relative" onMouseEnter={() => setReactionName("Like")} onMouseLeave={() => setReactionName("")}>
@@ -324,7 +324,7 @@ const Post = ({ hasVideo, hasImage }) => {
             {/* Comments */}
             {
                 showComments && <>
-                    <div className="border-t border-[#D9D9D9] mt-[19px] max-w-[585px]">
+                    <div className="border-t border-[#D9D9D9] max-w-[585px]">
                         {comments.slice(0, commentLimit).map(c => <Comment key={c.id} user={c.user} comment={c.comment} posted={c.posted} />)}
                     </div>
 
@@ -334,7 +334,7 @@ const Post = ({ hasVideo, hasImage }) => {
                                 className="border-b border-t border-[#D9D9D9] text-center py-4 cursor-pointer max-w-[585px]"
                                 onClick={() => setCommentLimit(comments.length)}
                             >
-                                <p className="text-[#3E3F5E] text-[12px] font-['Poppins']">Load More comments <span className="text-[#01C7D9] font-medium">2+</span></p>
+                                <p className="text-[#3E3F5E] text-[12px] font-['Poppins']">Load More comments <span className="text-[#01C7D9] font-medium">9+</span></p>
                             </div>
                         ) : (<></>)
                     }
@@ -344,7 +344,7 @@ const Post = ({ hasVideo, hasImage }) => {
                             <img className="min-w-[38px] min-h-[38px]" src="/friend.png" alt="User Image" />
                         </div>
                         <div>
-                            <input className="w-[476px] h-[48px] border border-[#D9D9D9] bg-white rounded-[13px] p-[15px] text-[12px] text-[#D9D9D9] font-['Poppins'] font-semibold" type="text" placeholder="Your reply" />
+                            <input className="w-[476px] h-[48px] border border-[#D9D9D9] bg-white rounded-[13px] p-[15px] text-[12px] text-[#D9D9D9] font-['Poppins'] font-semibold outline-none" type="text" placeholder="Your reply" />
                         </div>
                     </div>
                 </>

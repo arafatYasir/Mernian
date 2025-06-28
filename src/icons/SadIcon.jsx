@@ -1,6 +1,6 @@
 const SadIcon = ({width = 40, height = 40, scale = 100}) => {
     return (
-        <svg className={`hover:scale-${scale} transition`} width={width} height={height} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg className={`hover:scale-${scale} transition cursor-pointer`} width={width} height={height} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="40" height="40" fill="url(#pattern0_1_1492)" />
             <defs>
                 <pattern id="pattern0_1_1492" patternContentUnits="objectBoundingBox" width="1" height="1">

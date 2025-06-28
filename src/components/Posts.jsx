@@ -9,7 +9,7 @@ const Posts = () => {
         {id: 5, hasVideo: false, hasImage: true}
     ]
     return (
-        <div className="flex flex-col gap-10 mb-5">
+        <div className="flex flex-col gap-[26px] mb-5">
             {posts.map(post => (
                 <Post key={post.id} hasImage={post.hasImage} hasVideo={post.hasVideo} />
             ))}
