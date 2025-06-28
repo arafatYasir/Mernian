@@ -3,9 +3,10 @@ import GroupsIcon from "../icons/GroupsIcon";
 import { useState, useRef, useEffect } from "react";
 import AlbumIcon from "../icons/AlbumIcon";
 import CameraIcon from "../icons/CameraIcon";
+import AdditionalInformation from "./AdditionalInformation";
 
 const Upload = () => {
-    const [currentlyOpen, setCurrentlyOpen] = useState("upload");
+    const [currentlyOpen, setCurrentlyOpen] = useState("status");
 
     const [openDropdown, setOpenDropdown] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("Product Category");
@@ -63,9 +64,10 @@ const Upload = () => {
             </div>
 
             {currentlyOpen === "status" ? (
+                // Status Section
                 <div>
                     <textarea
-                        className="w-full bg-[#FCFCFD] h-[150px] border-t border-b border-[#D9D9D9] outline-none pt-[25px] pl-[25px] text-[#AFB0C0] text-[12px] font-light font-['Inter'] resize-none"
+                        className="w-full bg-[#FCFCFD] h-[150px] border-t border-b border-[#D9D9D9] outline-none pt-[25px] pl-[25px] placeholder:text-[#AFB0C0] text-[12px] font-light font-['Inter'] resize-none"
                         placeholder="Hi, A B M Shawon Islam, Share your post ..."
                     ></textarea>
 
@@ -85,155 +87,184 @@ const Upload = () => {
                     </div>
                 </div>
             ) : (
-                <div className="border-t border-b border-[#D9D9D9] pt-[29px] pb-[17px] px-[22px]">
-                    <div className="flex flex-wrap gap-[10px]">
-                        {/* Inputs */}
-                        <input
-                            className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
-                            type="text"
-                            placeholder="Product Name"
-                        />
-                        <input
-                            className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
-                            type="text"
-                            placeholder="Product Price"
-                        />
+                // Product Upload Section
+                <div>
+                    <div className="border-t border-b border-[#D9D9D9] pt-[29px] pb-[17px] px-[22px]">
+                        <div className="flex flex-wrap gap-[10px]">
+                            {/* Inputs & Others */}
+                            <input
+                                className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
+                                type="text"
+                                placeholder="Product Name"
+                            />
 
-                        {/* Category Dropdown */}
-                        <div ref={categoryRef} className="relative w-[265px] text-[12px] font-['Inter']">
-                            <div
-                                onClick={() => toggleDropdown("category")}
-                                className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
-                            >
-                                <span
-                                    className={`${selectedCategory === "Product Category"
-                                        ? "text-[#D9D9D9]"
-                                        : "text-[#181818]"
-                                        }`}
+                            <input
+                                className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
+                                type="text"
+                                placeholder="Product Price"
+                            />
+
+                            {/* Category Dropdown */}
+                            <div ref={categoryRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <div
+                                    onClick={() => toggleDropdown("category")}
+                                    className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
                                 >
-                                    {selectedCategory}
-                                </span>
-                                <svg
-                                    className={`w-4 h-4 transition-transform ${openDropdown === "category" ? "rotate-180" : ""
-                                        }`}
-                                    fill="none"
-                                    stroke="#D9D9D9"
-                                    strokeWidth="2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </div>
-                            {openDropdown === "category" && (
-                                <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
-                                    {categories.map((category, index) => (
-                                        <div
-                                            key={index}
-                                            onClick={() => {
-                                                setSelectedCategory(category);
-                                                setOpenDropdown(null);
-                                            }}
-                                            className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
-                                        >
-                                            {category}
-                                        </div>
-                                    ))}
+                                    <span
+                                        className={`${selectedCategory === "Product Category"
+                                            ? "text-[#D9D9D9]"
+                                            : "text-[#181818]"
+                                            }`}
+                                    >
+                                        {selectedCategory}
+                                    </span>
+                                    <svg
+                                        className={`w-4 h-4 transition-transform ${openDropdown === "category" ? "rotate-180" : ""
+                                            }`}
+                                        fill="none"
+                                        stroke="#D9D9D9"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </div>
-                            )}
-                        </div>
-
-                        {/* Color Dropdown */}
-                        <div ref={colorRef} className="relative w-[265px] text-[12px] font-['Inter']">
-                            <div
-                                onClick={() => toggleDropdown("color")}
-                                className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
-                            >
-                                <span
-                                    className={`${selectedColor === "Product Color"
-                                        ? "text-[#D9D9D9]"
-                                        : "text-[#181818]"
-                                        }`}
-                                >
-                                    {selectedColor}
-                                </span>
-                                <svg
-                                    className={`w-4 h-4 transition-transform ${openDropdown === "color" ? "rotate-180" : ""
-                                        }`}
-                                    fill="none"
-                                    stroke="#D9D9D9"
-                                    strokeWidth="2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
+                                {openDropdown === "category" && (
+                                    <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
+                                        {categories.map((category, index) => (
+                                            <div
+                                                key={index}
+                                                onClick={() => {
+                                                    setSelectedCategory(category);
+                                                    setOpenDropdown(null);
+                                                }}
+                                                className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
+                                            >
+                                                {category}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                            {openDropdown === "color" && (
-                                <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
-                                    {colors.map((color, index) => (
-                                        <div
-                                            key={index}
-                                            onClick={() => {
-                                                setSelectedColor(color);
-                                                setOpenDropdown(null);
-                                            }}
-                                            className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
-                                        >
-                                            {color}
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
 
-                        {/* Size Dropdown */}
-                        <div ref={sizeRef} className="relative w-[265px] text-[12px] font-['Inter']">
-                            <div
-                                onClick={() => toggleDropdown("size")}
-                                className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
-                            >
-                                <span
-                                    className={`${selectedSize === "Product Size"
-                                        ? "text-[#D9D9D9]"
-                                        : "text-[#181818]"
-                                        }`}
+                            {/* Color Dropdown */}
+                            <div ref={colorRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <div
+                                    onClick={() => toggleDropdown("color")}
+                                    className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
                                 >
-                                    {selectedSize}
-                                </span>
-                                <svg
-                                    className={`w-4 h-4 transition-transform ${openDropdown === "size" ? "rotate-180" : ""
-                                        }`}
-                                    fill="none"
-                                    stroke="#D9D9D9"
-                                    strokeWidth="2"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
+                                    <span
+                                        className={`${selectedColor === "Product Color"
+                                            ? "text-[#D9D9D9]"
+                                            : "text-[#181818]"
+                                            }`}
+                                    >
+                                        {selectedColor}
+                                    </span>
+                                    <svg
+                                        className={`w-4 h-4 transition-transform ${openDropdown === "color" ? "rotate-180" : ""
+                                            }`}
+                                        fill="none"
+                                        stroke="#D9D9D9"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                                {openDropdown === "color" && (
+                                    <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
+                                        {colors.map((color, index) => (
+                                            <div
+                                                key={index}
+                                                onClick={() => {
+                                                    setSelectedColor(color);
+                                                    setOpenDropdown(null);
+                                                }}
+                                                className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
+                                            >
+                                                {color}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                            {openDropdown === "size" && (
-                                <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
-                                    {sizes.map((size, index) => (
-                                        <div
-                                            key={index}
-                                            onClick={() => {
-                                                setSelectedSize(size);
-                                                setOpenDropdown(null);
-                                            }}
-                                            className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
-                                        >
-                                            {size}
-                                        </div>
-                                    ))}
+
+                            {/* Size Dropdown */}
+                            <div ref={sizeRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <div
+                                    onClick={() => toggleDropdown("size")}
+                                    className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
+                                >
+                                    <span
+                                        className={`${selectedSize === "Product Size"
+                                            ? "text-[#D9D9D9]"
+                                            : "text-[#181818]"
+                                            }`}
+                                    >
+                                        {selectedSize}
+                                    </span>
+                                    <svg
+                                        className={`w-4 h-4 transition-transform ${openDropdown === "size" ? "rotate-180" : ""
+                                            }`}
+                                        fill="none"
+                                        stroke="#D9D9D9"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
                                 </div>
-                            )}
+                                {openDropdown === "size" && (
+                                    <div className="absolute top-full left-0 mt-1 w-full bg-white border border-[#D9D9D9] rounded-[5px] shadow z-10">
+                                        {sizes.map((size, index) => (
+                                            <div
+                                                key={index}
+                                                onClick={() => {
+                                                    setSelectedSize(size);
+                                                    setOpenDropdown(null);
+                                                }}
+                                                className="px-[10px] py-[7.5px] hover:bg-gray-100 cursor-pointer text-[#181818]"
+                                            >
+                                                {size}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            <input
+                                className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
+                                type="number"
+                                placeholder="Product Quantity"
+                            />
+
+                            {/* Image Preview & Thubnail Indicators */}
+                            <div className="w-[265px] h-[30px] bg-[#24234B] rounded-[5px] text-white text-[12px] font-['Inter'] flex items-center justify-center">Image Preview</div>
+                            <div className="w-[265px] h-[30px] bg-[#1877F2] rounded-[5px] text-white text-[12px] font-['Inter'] flex items-center justify-center">Image Thumbnail</div>
+
+                            {/* Image Preview & Thumbnail */}
+                            <div>
+                                <img src="/image-preview.png" alt="Image Preview" />
+                            </div>
+                            <div>
+                                <img src="/image-thumbnail.png" alt="Image Thumbnail" />
+                            </div>
+
+                            {/* Product Description Input */}
+                            <textarea className="w-full h-[71px] outline-none resize-none text-[12px] font-['Inter'] placeholder:text-[#D9D9D9] border border-[#D9D9D9] rounded-[5px] pt-[10px] pl-[10px]" placeholder="Product Description"></textarea>
+
+                            {/* Additional Informations */}
+                            <AdditionalInformation />
                         </div>
-
-                        <input
-                            className="placeholder:text-[#D9D9D9] w-[265px] h-[30px] text-[12px] font-['Inter'] px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] outline-none"
-                            type="number"
-                            placeholder="Product Quantity"
-                        />
-
+                    </div>
+                    <div className="py-[19px] flex gap-5 justify-end px-[28px]">
+                        <button className="text-white text-[12px] font-['Inter'] font-bold bg-[#181828] rounded-[6px] px-[37px] py-3 cursor-pointer">
+                            Discard
+                        </button>
+                        <button className="text-white text-[12px] font-['Inter'] font-bold bg-[#615DFA] rounded-[6px] px-[37px] py-3 cursor-pointer">
+                            Post
+                        </button>
                     </div>
                 </div>
             )}
