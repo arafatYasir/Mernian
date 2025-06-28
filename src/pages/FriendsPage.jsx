@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Friend from "../components/Friend";
 import ProfileHeader from "../components/ProfileHeader";
 import SearchIcon2 from "../icons/SearchIcon2";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
 
 const FriendsPage = () => {
     const friends = [
@@ -54,8 +57,16 @@ const FriendsPage = () => {
         { id: 48, name: "Habib Reza", email: "habib@gmail.com", friends: 388, posts: 12, followers: "7k" }
     ];
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const friendsPerPage = 8;
+    const totalPages = friends.length / 8;
+
+    const low = (currentPage * friendsPerPage) - friendsPerPage;
+    const high = currentPage * friendsPerPage;
+
+
     return (
-        <div>
+        <div className="mb-[45px]">
             <div className="mt-8">
                 <ProfileHeader />
             </div>
@@ -75,8 +86,34 @@ const FriendsPage = () => {
 
             <div className="max-w-[1185px] flex flex-wrap gap-4 mt-[30px]">
                 {
-                    friends.map(friend => <Friend key={friend.id} name={friend.name} email={friend.email} posts={friend.posts} friends={friend.friends} followers={friend.followers} />)
+                    friends.slice(low, high).map(friend => <Friend key={friend.id} name={friend.name} email={friend.email} posts={friend.posts} friends={friend.friends} followers={friend.followers}/>)
                 }
+            </div>
+
+            <div className="flex items-center justify-end mt-[37px] gap-[37px]">
+                <button 
+                    disabled={currentPage === 1} 
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    className={`${currentPage === 1 ? "" : "cursor-pointer"}`}
+                >
+                    <LeftArrowIcon />
+                </button>
+                <div className="flex gap-5">
+                    {Array(totalPages).fill(1).map((_, idx) => (
+                        <span
+                            key={idx}
+                            onClick={() => setCurrentPage(idx + 1)}
+                            className={`text-[#3E3F5E] text-sm font-['Poppins'] font-medium ${idx + 1 === currentPage ? "text-[#23D2E2]" : ""} cursor-pointer`}
+                        >{(idx + 1) > 0 && (idx + 1) < 10 ? 0 : ""}{idx + 1}</span>
+                    ))}
+                </div>
+                <button 
+                    disabled={currentPage === totalPages} 
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    className={`${currentPage === totalPages ? "" : "cursor-pointer"}`}
+                >
+                    <RightArrowIcon />
+                </button>
             </div>
         </div>
     );

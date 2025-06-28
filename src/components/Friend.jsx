@@ -5,7 +5,7 @@ import YoutubeIcon from "../icons/YoutubeIcon";
 
 const Friend = ({name, email, friends, posts, followers}) => {
     return (
-        <div className="w-[284px] h-[376px] bg-white rounded-[15px] mb-20">
+        <div className="w-[284px] h-[376px] bg-white rounded-[15px]">
             <div className="relative">
                 <img className="rounded-t-[15px] w-full h-[83px]" src="/small-cover-photo.png" alt="Cover Photo" />
                 <img className="w-[77px] h-[77px] border-[6px] border-white rounded-full absolute -bottom-1/2 left-1/2 -translate-x-1/2" src="/profile-picture.png" alt="Profile Picture" />
