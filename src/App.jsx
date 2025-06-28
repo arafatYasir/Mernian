@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router";
 import Layout from "./components/Layout";
 import NewsfeedPage from "./pages/NewsfeedPage";
 import ProfilePage from "./pages/ProfilePage";
+import FriendsPage from "./pages/FriendsPage";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/groups" element={<div>Groups</div>} />
         <Route path="/photos" element={<div>Photos</div>} />
-        <Route path="/friends" element={<div>friends</div>} />
+        <Route path="/friends" element={<FriendsPage />} />
         <Route path="/requests" element={<div>Requests</div>} />
         <Route path="/logout" element={<div>Logout</div>} />
       </Route>
