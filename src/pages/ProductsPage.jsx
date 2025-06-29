@@ -2,6 +2,8 @@ import { useState } from "react";
 import Product from "../components/Product";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
+import { FaStar } from "react-icons/fa";
+import SearchIcon2 from "../icons/SearchIcon2"
 
 const ProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -89,16 +91,121 @@ const ProductsPage = () => {
 
 
     return (
-        <div className="w-[1185px] mb-[52px]">
+        <div className="w-[1185px] mb-[52px] mt-9">
+            <div>
+                <img src="/marketplace-banner.png" alt="Marketplace Banner" />
+            </div>
             <div className="mt-[20px]">
                 <p className="text-[#AFB0C0] text-sm font-['Poppins'] mb-1">BROWSE PRODUCTS</p>
                 <h3 className="text-[#24234B] text-2xl font-['Poppins'] font-medium">Digital Items</h3>
             </div>
 
+            {/* Search and Filters */}
+            <div className="mt-[50px]">
+                <div className="flex gap-3">
+                    <div>
+                        <input className="w-[300px] h-[45px] border border-[#D9D9D9] rounded-[15px] outline-none py-[9.5px] pl-[15px] text-[17px] font-medium font-['Poppins'] placeholder:text-[#D9D9D9]" type="text" placeholder="Search items" />
+                    </div>
+                    <button className="bg-[#23D2E2] w-[63px] h-[45px] flex items-center justify-center rounded-[15px] cursor-pointer">
+                        <SearchIcon2 />
+                    </button>
+                </div>
+
+                {/* Put the dropdown here as per my design */}
+            </div>
+
             {/* Products & Sidebar */}
             <div className="flex justify-between mt-[50px]">
                 {/* Sidebar */}
-                <div className="w-[284px] h-[661px] bg-red-400 rounded-[15px]"></div>
+                <div className="w-[284px] h-[661px] bg-white rounded-[15px] px-[15px] py-[30px]">
+                    {/* Categories */}
+                    <div className="font-['Poppins'] text-sm">
+                        <h4 className="font-bold">Categories</h4>
+
+                        <div className="font-medium flex flex-col gap-[10px] mt-[13px]">
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">All Categories</span> <span className="text-[#23D2E2]">1207</span></p>
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">Psd Templates</span> <span className="text-[#23D2E2]">134</span></p>
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">HTML Templates</span> <span className="text-[#23D2E2]">134</span></p>
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">WP Templates</span> <span className="text-[#23D2E2]">134</span></p>
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">Illustration</span> <span className="text-[#23D2E2]">134</span></p>
+                            <p className="flex justify-between"><span className="text-[#AFB0C0]">Logos and badges</span> <span className="text-[#23D2E2]">134</span></p>
+                        </div>
+                    </div>
+
+                    {/* Price Range */}
+                    <div className="mt-[29px]">
+                        <h4 className="text-sm font-['Poppins'] font-bold mb-[25px]">Price Range</h4>
+
+                        <div className="text-sm">
+                            <input className="w-[79px] h-12 border border-[#D9D9D9] rounded-[15px] px-[21px] py-[13.5px] placeholder:text-[#D9D9D9] outline-none" type="text" placeholder="From" />
+                            <input className="w-[79px] h-12 border border-[#D9D9D9] rounded-[15px] px-[31px] py-[13.5px] placeholder:text-[#D9D9D9] outline-none ml-3" type="text" placeholder="To" />
+                        </div>
+
+                        <button className="text-white text-sm font-['Poppins'] font-bold px-[55.5px] py-[9.5px] bg-[#23D2E2] rounded-[11px] cursor-pointer mt-[25px]">Apply Price Filter</button>
+                    </div>
+
+                    {/* Reviews */}
+                    <div className="mt-[19px]">
+                        <h4 className="text-sm font-['Poppins'] font-bold mb-[22px]">Reviews</h4>
+                        <h4 className="text-sm font-['Poppins'] flex justify-between"><span className="font-bold text-[#45437F]">All reviews</span> <span className="text-[#23D2E2]">1207</span></h4>
+
+                        <div className="flex items-center justify-between mt-[10px]">
+                            <div className="flex items-center gap-[11px]">
+                                <div className="flex text-[#FCE730] gap-[3px] text-sm">
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                </div>
+                                <span className="text-sm font-['Poppins'] font-medium text-[#3E3F5E]">4+</span>
+                            </div>
+                            <span className="text-sm font-['Poppins'] text-[#23D2E2]">1207</span>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-[10px]">
+                            <div className="flex items-center gap-[11px]">
+                                <div className="flex text-[#FCE730] gap-[3px] text-sm">
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                </div>
+                                <span className="text-sm font-['Poppins'] font-medium text-[#3E3F5E]">4+</span>
+                            </div>
+                            <span className="text-sm font-['Poppins'] text-[#23D2E2]">1207</span>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-[10px]">
+                            <div className="flex items-center gap-[11px]">
+                                <div className="flex text-[#FCE730] gap-[3px] text-sm">
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                </div>
+                                <span className="text-sm font-['Poppins'] font-medium text-[#3E3F5E]">4+</span>
+                            </div>
+                            <span className="text-sm font-['Poppins'] text-[#23D2E2]">1207</span>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-[10px]">
+                            <div className="flex items-center gap-[11px]">
+                                <div className="flex text-[#FCE730] gap-[3px] text-sm">
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                </div>
+                                <span className="text-sm font-['Poppins'] font-medium text-[#3E3F5E]">4+</span>
+                            </div>
+                            <span className="text-sm font-['Poppins'] text-[#23D2E2]">1207</span>
+                        </div>
+                    </div>
+                </div>
                 {/* Products */}
                 <div className="max-w-[887px]">
                     <div className="flex flex-wrap gap-[20px]">

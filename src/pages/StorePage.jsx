@@ -90,7 +90,11 @@ const StorePage = () => {
 
     return (
         <div className="w-[1185px] mt-9 mb-[52px]">
-            <h4 className="text-sm font-['Poppins'] font-bold">Categories</h4>
+            <div>
+                <img src="/marketplace-banner.png" alt="Marketplace Banner" />
+            </div>
+
+            <h4 className="text-sm font-['Poppins'] font-bold mt-[22px]">Categories</h4>
 
             {/* Categories */}
             <div className="flex justify-between mt-9">
