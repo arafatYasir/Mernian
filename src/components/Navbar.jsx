@@ -119,7 +119,7 @@ const Navbar = () => {
                     <Link>Careers</Link>
                 </li>
                 <li className="text-white text-sm font-bold font-['Poppins']">
-                    <Link>Store</Link>
+                    <Link to="/store">Store</Link>
                 </li>
                 <li className="text-white text-sm font-bold font-['Poppins']">
                     <Link>FAQ</Link>
