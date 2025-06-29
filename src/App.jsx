@@ -5,6 +5,7 @@ import ProfilePage from "./pages/ProfilePage";
 import FriendsPage from "./pages/FriendsPage";
 import AboutPage from "./pages/AboutPage";
 import StorePage from "./pages/StorePage";
+import ProductsPage from "./pages/ProductsPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/store" element={<StorePage />}/>
+        <Route path="/products" element={<ProductsPage />}/>
         <Route path="/groups" element={<div>Groups</div>} />
         <Route path="/photos" element={<div>Photos</div>} />
         <Route path="/friends" element={<FriendsPage />} />

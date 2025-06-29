@@ -3,9 +3,9 @@ import Product from "../components/Product";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 
-const StorePage = () => {
+const ProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    
+
     const products = [
         { id: 1, name: "Intel Pentium G6400 10th Gen Special Deal PC", type: "PC", price: 12 },
         { id: 2, name: "HP Pavilion 15 Core i5 12th Gen Everyday Laptop", type: "Laptop", price: 38 },
@@ -81,7 +81,7 @@ const StorePage = () => {
         { id: 72, name: "HP LaserJet Pro M15a Monochrome Laser Printer", type: "Office Equipment", price: 32 },
     ];
 
-    const productsPerPage = 12;
+    const productsPerPage = 9;
     const totalPages = products.length / productsPerPage;
 
     const low = (currentPage * productsPerPage) - productsPerPage;
@@ -89,37 +89,30 @@ const StorePage = () => {
 
 
     return (
-        <div className="w-[1185px] mt-9 mb-[52px]">
-            <h4 className="text-sm font-['Poppins'] font-bold">Categories</h4>
-
-            {/* Categories */}
-            <div className="flex justify-between mt-9">
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Desktop</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Laptop</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Component</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Monitor</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">UPS</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Tablet</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Office Equipment</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Camera</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Security</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Networking</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Software</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Accessories</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Gadget</p>
-                <p className="font-['Poppins'] text-[14px] font-medium cursor-pointer hover:text-[#615DFA] transition">Gaming</p>
+        <div className="w-[1185px] mb-[52px]">
+            <div className="mt-[20px]">
+                <p className="text-[#AFB0C0] text-sm font-['Poppins'] mb-1">BROWSE PRODUCTS</p>
+                <h3 className="text-[#24234B] text-2xl font-['Poppins'] font-medium">Digital Items</h3>
             </div>
 
-            {/* Products */}
-            <div className="flex flex-wrap gap-[20px] mt-9">
-                {
-                    products.slice(low, high).map(p => <Product key={p.id} name={p.name} price={p.price} type={p.type} />)
-                }
+            {/* Products & Sidebar */}
+            <div className="flex justify-between mt-[50px]">
+                {/* Sidebar */}
+                <div className="w-[284px] h-[661px] bg-red-400 rounded-[15px]"></div>
+                {/* Products */}
+                <div className="max-w-[887px]">
+                    <div className="flex flex-wrap gap-[20px]">
+                        {
+                            products.slice(low, high).map(p => <Product key={p.id} name={p.name} price={p.price} type={p.type} />)
+                        }
+                    </div>
+                </div>
             </div>
 
+            {/* Pagination Numbers */}
             <div className="flex items-center justify-end mt-[37px] gap-[37px]">
-                <button 
-                    disabled={currentPage === 1} 
+                <button
+                    disabled={currentPage === 1}
                     onClick={() => setCurrentPage(prev => prev - 1)}
                     className={`${currentPage === 1 ? "" : "cursor-pointer"}`}
                 >
@@ -134,8 +127,8 @@ const StorePage = () => {
                         >{(idx + 1) > 0 && (idx + 1) < 10 ? 0 : ""}{idx + 1}</span>
                     ))}
                 </div>
-                <button 
-                    disabled={currentPage === totalPages} 
+                <button
+                    disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage(prev => prev + 1)}
                     className={`${currentPage === totalPages ? "" : "cursor-pointer"}`}
                 >
@@ -146,4 +139,4 @@ const StorePage = () => {
     );
 };
 
-export default StorePage;
+export default ProductsPage;

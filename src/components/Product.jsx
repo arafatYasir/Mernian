@@ -18,8 +18,8 @@ const Product = ({name, type, price}) => {
             </div>
 
             <div className="text-[13px] font-['Poppins'] font-semibold text-white mt-[28px]">
-                <button className="bg-[#615DFA] w-[50%] py-[8.5px] rounded-bl-[15px]">Add to Cart</button>
-                <button className="bg-[#23D2E2] w-[50%] py-[8.5px] rounded-br-[15px]">Wishlist</button>
+                <button className="bg-[#615DFA] w-[50%] py-[8.5px] rounded-bl-[15px] cursor-pointer">Add to Cart</button>
+                <button className="bg-[#23D2E2] w-[50%] py-[8.5px] rounded-br-[15px] cursor-pointer">Wishlist</button>
             </div>
         </div>
     );
