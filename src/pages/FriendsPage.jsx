@@ -59,7 +59,7 @@ const FriendsPage = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const friendsPerPage = 8;
-    const totalPages = friends.length / 8;
+    const totalPages = friends.length / friendsPerPage;
 
     const low = (currentPage * friendsPerPage) - friendsPerPage;
     const high = currentPage * friendsPerPage;

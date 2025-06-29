@@ -1,6 +1,11 @@
+import { useState } from "react";
 import Product from "../components/Product";
+import RightArrowIcon from "../icons/RightArrowIcon";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
 
 const StorePage = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    
     const products = [
         { id: 1, name: "Intel Pentium G6400 10th Gen Special Deal PC", type: "PC", price: 12 },
         { id: 2, name: "HP Pavilion 15 Core i5 12th Gen Everyday Laptop", type: "Laptop", price: 38 },
@@ -76,6 +81,13 @@ const StorePage = () => {
         { id: 72, name: "HP LaserJet Pro M15a Monochrome Laser Printer", type: "Office Equipment", price: 32 },
     ];
 
+    const productsPerPage = 12;
+    const totalPages = products.length / productsPerPage;
+
+    const low = (currentPage * productsPerPage) - productsPerPage;
+    const high = currentPage * productsPerPage;
+
+
     return (
         <div className="w-[1185px] mt-9 mb-20">
             <h4 className="text-sm font-['Poppins'] font-bold">Categories</h4>
@@ -101,8 +113,34 @@ const StorePage = () => {
             {/* Products */}
             <div className="flex flex-wrap gap-[20px] mt-9">
                 {
-                    products.map(p => <Product key={p.id} name={p.name} price={p.price} type={p.type} />)
+                    products.slice(low, high).map(p => <Product key={p.id} name={p.name} price={p.price} type={p.type} />)
                 }
+            </div>
+
+            <div className="flex items-center justify-end mt-[37px] gap-[37px]">
+                <button 
+                    disabled={currentPage === 1} 
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    className={`${currentPage === 1 ? "" : "cursor-pointer"}`}
+                >
+                    <LeftArrowIcon />
+                </button>
+                <div className="flex gap-5">
+                    {Array(totalPages).fill(1).map((_, idx) => (
+                        <span
+                            key={idx}
+                            onClick={() => setCurrentPage(idx + 1)}
+                            className={`text-[#3E3F5E] text-sm font-['Poppins'] font-medium ${idx + 1 === currentPage ? "text-[#23D2E2]" : ""} cursor-pointer`}
+                        >{(idx + 1) > 0 && (idx + 1) < 10 ? 0 : ""}{idx + 1}</span>
+                    ))}
+                </div>
+                <button 
+                    disabled={currentPage === totalPages} 
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    className={`${currentPage === totalPages ? "" : "cursor-pointer"}`}
+                >
+                    <RightArrowIcon />
+                </button>
             </div>
         </div>
     );
