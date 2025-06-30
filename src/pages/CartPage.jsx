@@ -1,9 +1,10 @@
+import { Link } from "react-router";
 import CartProduct from "../components/CartProduct";
 
 const CartPage = () => {
     const products = Array(3).fill(1);
     return (
-        <div className="w-[1185px] mt-9">
+        <div className="max-w-[1185px] mt-9">
             <div>
                 <img src="/marketplace-banner.png" alt="Marketplace Banner Image" />
             </div>
@@ -78,7 +79,7 @@ const CartPage = () => {
                     </div>
 
                     <div className="mt-[53px]">
-                        <button className="px-12 py-[15px] bg-[#23D2E2] rounded-[15px] text-[12px] font-['Poppins'] font-medium text-white cursor-pointer">Proccecd to checkout</button>
+                        <Link to="/checkout" className="px-12 py-[15px] bg-[#23D2E2] rounded-[15px] text-[12px] font-['Poppins'] font-medium text-white cursor-pointer inline-block">Proccecd to checkout</Link>
 
                         <button className="px-[77.5px] py-[15px] rounded-[15px] text-[12px] font-['Poppins'] font-medium text-[#AFB0C0] cursor-pointer border border-[#D9D9D9] mt-[10px]">Update cart</button>
                     </div>

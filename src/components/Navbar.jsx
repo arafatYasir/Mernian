@@ -86,7 +86,7 @@ const Navbar = () => {
             </div>
 
             <ul className="flex items-center gap-12 relative">
-                {/* Menu dropdown trigger */}
+                {/* Menu dropdown */}
                 <li
                     className="cursor-pointer relative"
                     onClick={() => setDropdownOpen(!dropdownOpen)}

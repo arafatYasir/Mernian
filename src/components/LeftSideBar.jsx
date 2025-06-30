@@ -6,6 +6,7 @@ import PhotoIcon from "../icons/PhotoIcon";
 import FriendsIcon from "../icons/FriendsIcon";
 import RequestIcon from "../icons/RequestIcon";
 import LogoutIcon from "../icons/LogoutIcon"
+import CartIcon from "../icons/CartIcon";
 
 const LeftSideBar = () => {
     return (
@@ -57,6 +58,10 @@ const LeftSideBar = () => {
                 <NavLink to="/requests" className="flex items-center gap-[30px] py-[16px] px-5 w-[268px] text-[#AFB0C0]">
                     <RequestIcon />
                     <span className="text-sm font-['Poppins'] font-semibold">Friend Requests</span>
+                </NavLink>
+                <NavLink to="/cart" className="flex items-center gap-[30px] py-[16px] px-5 w-[268px] text-[#AFB0C0]">
+                    <CartIcon width={20} height={20} currentColor={true} />
+                    <span className="text-sm font-['Poppins'] font-semibold">Cart</span>
                 </NavLink>
                 <NavLink to="/logout" className="flex items-center gap-[30px] py-[16px] px-5 w-[268px] text-[#AFB0C0]">
                     <LogoutIcon />
