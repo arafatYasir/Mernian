@@ -124,7 +124,6 @@ const CheckoutPage = () => {
 
                         <p className="text-[11px] font-['Poppins'] text-[#AFB0C0] font-medium mt-2">Pay with your paypal balance or connected bank account
                             it’s quick and really secure.</p>
-
                         
                         <div className="flex items-center gap-1.5 mt-[11px]">
                             <div className="w-[14px] h-[14px] border border-[#AFB0C0] rounded-full cursor-pointer"></div>
@@ -132,12 +131,10 @@ const CheckoutPage = () => {
                         </div>
 
                         <div className="text-center mt-[33px]">
-                            <button className="text-white text-[12px] font-['Poppins'] font-medium px-[62.5px] py-[15px] bg-[#23D2E2] rounded-[15px] cursor-pointer">Credit or Debit card</button>
+                            <button className="text-white text-[12px] font-['Poppins'] font-medium px-[62.5px] py-[15px] bg-[#23D2E2] rounded-[15px] cursor-pointer">Complete Order!</button>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     );

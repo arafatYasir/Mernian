@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Product = ({name, type, price}) => {
     return (
-        <div className="w-[281px] h-[380px] bg-white rounded-[15px]">
+        <Link to="/product-details" className="w-[281px] h-[380px] bg-white rounded-[15px] block">
             <div className="relative">
                 <img src="/product-image.png" alt="Product Image" />
                 <span style={{boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.10)"}} className="bg-white w-[70px] h-[30px] flex items-center justify-center rounded-3xl absolute right-[14px] top-[165px] text-sm text-[#615DFA] font-['Poppins'] font-bold">${price}</span>
@@ -21,7 +21,7 @@ const Product = ({name, type, price}) => {
                 <button className="bg-[#615DFA] w-[50%] py-[8.5px] rounded-bl-[15px] cursor-pointer">Add to Cart</button>
                 <button className="bg-[#23D2E2] w-[50%] py-[8.5px] rounded-br-[15px] cursor-pointer">Wishlist</button>
             </div>
-        </div>
+        </Link>
     );
 };
 
