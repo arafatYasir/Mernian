@@ -25,7 +25,7 @@ const ProfileHeader = () => {
                     </p>
                 </div>
                 <div>
-                    <img className="absolute bottom-1/2 left-1/2 -translate-x-1/2 w-[130px] h-[130px] border-[8px] rounded-full border-white" src="/big-profile-picture.png" alt="" />
+                    <img className="absolute bottom-1/2 left-1/2 -translate-x-1/2 w-[130px] h-[130px] border-[9px] rounded-full border-white" src="/big-profile-picture.png" alt="" />
                 </div>
 
                 <div className="text-center absolute top-[60px] left-1/2 -translate-x-1/2">

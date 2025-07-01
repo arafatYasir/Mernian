@@ -20,14 +20,13 @@ import {
 } from "react-icons/hi";
 import Comment from "./Comment";
 
-const Post = ({ hasVideo, hasImage }) => {
+const Post = ({ hasVideo, hasImage, hasParticipants }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showReactions, setShowReactions] = useState(false);
     const [reactionName, setReactionName] = useState(null);
     const [reactedIcon, setReactedIcon] = useState(null);
     const [videoModalOpen, setVideoModalOpen] = useState(false);
     const [showComments, setShowComments] = useState(false);
-    const [commentLimit, setCommentLimit] = useState(2);
     const dropdownRef = useRef(null);
     const timerRef = useRef(null)
 
@@ -65,41 +64,6 @@ const Post = ({ hasVideo, hasImage }) => {
         { icon: <SadIcon width={20} height={20} />, label: "Sad" },
     ];
 
-    const comments = [
-        {
-            id: 1,
-            user: "Nadia Jahan",
-            comment: "Such a great vibe here. Looking forward to another amazing session like the last one!",
-            posted: "10 minutes ago"
-        },
-        {
-            id: 2,
-            user: "Imran Kabir",
-            comment: "Honestly, the energy in these streams is unmatched. Keep doing what you're doing!",
-            posted: "22 minutes ago"
-        },
-        {
-            id: 3,
-            user: "Farhana Akter",
-            comment: "If it's anything like the previous stream, it's gonna be a blast! Let's gooo!",
-            posted: "7 minutes ago"
-        },
-        {
-            id: 4,
-            user: "Rasel Ahmed",
-            comment: "Always a highlight of my week. So pumped for this one!",
-            posted: "12 minutes ago"
-        },
-        {
-            id: 5,
-            user: "Tania Sultana",
-            comment: "Excited to join again! The last one had such good vibes and energy.",
-            posted: "18 minutes ago"
-        }
-    ];
-
-
-
     const checkAndSetIcon = (value) => {
         if (reactedIcon === null || reactedIcon !== value) {
             setReactedIcon(value);
@@ -126,10 +90,10 @@ const Post = ({ hasVideo, hasImage }) => {
 
     return (
         <div className="bg-white rounded-[15px] font-['Poppins'] ">
-            <div className="max-w-[585px]  py-[15px] pl-4 pr-10">
+            <div className="max-w-[585px] py-[15px]">
                 {/* Post Part */}
                 <div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between pl-4 pr-10">
                         <div className="flex items-center gap-[15px]">
                             <img className="w-[50px] h-[50px]" src="/friend.png" alt="" />
                             <div>
@@ -174,8 +138,8 @@ const Post = ({ hasVideo, hasImage }) => {
                     </div>
 
                     {/* If the post has a image or video */}
-                    <div className={`border-b border-[#D9D9D9] ${hasImage || hasVideo ? "pb-[15px]" : "pb-[29px]"}`}>
-                        <p className="max-w-[524px] text-[12px] mt-[23px]">
+                    <div className={`${hasImage || hasVideo ? "pb-[15px]" : "pb-[29px]"}`}>
+                        <p className="max-w-[524px] text-[12px] mt-[23px] pl-4 pr-10">
                             I have great news to share with you all! I’ve been officially made a
                             game streaming verified partner by Streamy http://lyt.ly/snej25. What
                             does this mean? I’ll be uploading new content every day, improving
@@ -223,8 +187,11 @@ const Post = ({ hasVideo, hasImage }) => {
                         </>}
                     </div>
 
+                    {/* Line */}
+                    <div className="w-[524px] h-[1px] bg-[#D9D9D9] relative left-5"></div>
+
                     {/* Post Status */}
-                    <div className="relative mt-[15px] max-w-[524px]">
+                    <div className="relative mt-[15px] w-[524px] left-5">
                         <div>
                             <div className="absolute top-0 left-0 z-40">
                                 <LikeIcon width={20} height={20} />
@@ -237,9 +204,26 @@ const Post = ({ hasVideo, hasImage }) => {
                             </div>
                         </div>
                         <div className="flex justify-between font-['Inter'] text-[12px] font-bold pl-[63px]">
-                            <p>12</p>
-                            <p>13 Comments</p>
-                            <p>2 Shares</p>
+                            <div className="flex gap-[22px]">
+                                <p>12</p>
+                                {hasParticipants && (
+                                    <div>
+                                        <div className="relative">
+                                            <img className="w-[20px] h-[20px] absolute top-0 left-0 z-50" src="/friend.png" alt="Participant" />
+                                            <img className="w-[20px] h-[20px] absolute top-0
+                                            left-3 z-40" src="/friend.png" alt="Participant" />
+                                            <img className="w-[20px] h-[20px] absolute top-0
+                                             left-6 z-30" src="/friend.png" alt="Participant" />
+                                            <img className="w-[20px] h-[20px] absolute top-0 left-9 z-20" src="/friend.png" alt="Participant" />
+                                        </div>
+                                        <span className="pl-[65px]">12 Participants</span>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={`flex ${hasParticipants ? "gap-[15px]" : "gap-[157px]"}`}>
+                                <p>13 Comments</p>
+                                <p>2 Shares</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -325,26 +309,27 @@ const Post = ({ hasVideo, hasImage }) => {
             {
                 showComments && <>
                     <div className="border-t border-[#D9D9D9] max-w-[585px]">
-                        {comments.slice(0, commentLimit).map(c => <Comment key={c.id} user={c.user} comment={c.comment} posted={c.posted} />)}
+                        <Comment user="Sohel Rana" comment="It’s a always pleasure to do this streams with you. If we have at least half half the fun than last time it will be an incredible success!" posted="15 minutes ago" />
+
+                        <div className="relative left-6">
+                            <Comment user="Noyon" comment="It’s great oppurtunity" posted="1 minute ago" showWow={false} />
+                        </div>
                     </div>
 
-                    {
-                        commentLimit < comments.length ? (
-                            <div
-                                className="border-b border-t border-[#D9D9D9] text-center py-4 cursor-pointer max-w-[585px]"
-                                onClick={() => setCommentLimit(comments.length)}
-                            >
-                                <p className="text-[#3E3F5E] text-[12px] font-['Poppins']">Load More comments <span className="text-[#01C7D9] font-medium">9+</span></p>
-                            </div>
-                        ) : (<></>)
-                    }
+                    {/* More Comment Load Button */}
+                    <div
+                        className="border-b border-t border-[#D9D9D9] text-center py-4 cursor-pointer max-w-[585px]"
+                    >
+                        <p className="text-[#3E3F5E] text-[12px] font-['Poppins']">Load More comments <span className="text-[#01C7D9] font-medium">9+</span></p>
+                    </div>
 
+                    {/* Commenting Field */}
                     <div className="py-[18px] px-[26px] flex items-center gap-[22px] max-w-[585px]">
                         <div>
                             <img className="min-w-[38px] min-h-[38px]" src="/friend.png" alt="User Image" />
                         </div>
                         <div>
-                            <input className="w-[476px] h-[48px] border border-[#D9D9D9] bg-white rounded-[13px] p-[15px] text-[12px] text-[#D9D9D9] font-['Poppins'] font-semibold outline-none" type="text" placeholder="Your reply" />
+                            <input className="w-[476px] h-[48px] border border-[#D9D9D9] bg-white rounded-[13px] p-[15px] text-[12px] placeholder:text-[#D9D9D9] font-['Poppins'] font-semibold outline-none" type="text" placeholder="Your reply" />
                         </div>
                     </div>
                 </>

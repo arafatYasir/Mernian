@@ -15,10 +15,12 @@ const LeftSideBar = () => {
                 <img src="/small-cover-photo.png" alt="Cover photo" />
                 <img className="w-[110px] h-[110px] rounded-full absolute top-4 left-1/2 -translate-x-1/2 border-[5px] border-white" src="/profile-picture.png" />
             </div>
+
             <div className="mt-[75px] text-center">
                 <h4 className="text-black font-['Poppins'] font-bold">A B M Shawon Islam</h4>
                 <a className="text-[#AFB0C0] text-[12px] font-['Poppins'] font-medium hover:text-[#615DFA] hover:underline" href="#" target="_blank">www.abm.com</a>
             </div>
+
             <div className="flex gap-12 justify-center mt-[42px]">
                 <p className="flex flex-col items-center relative after:content-[''] after:absolute after:w-[1px] after:h-[25px] after:bg-[#AFB0C0] after:top-1/2 after:right-[-25px] after:-translate-y-1/2">
                     <span className="text-black font-['Poppins'] text-sm font-bold">930</span>

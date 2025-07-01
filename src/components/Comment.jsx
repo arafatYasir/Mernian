@@ -9,7 +9,7 @@ import FunnyIcon from "../icons/FunnyIcon";
 import AngryIcon from "../icons/AngryIcon";
 import SadIcon from "../icons/SadIcon";
 
-const Comment = ({ user, comment, posted }) => {
+const Comment = ({ user, comment, posted, showWow = true }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showReactions, setShowReactions] = useState(false);
     const [reactionName, setReactionName] = useState(null);
@@ -73,9 +73,11 @@ const Comment = ({ user, comment, posted }) => {
                             <div className="absolute top-[-10px] left-0 z-50">
                                 <LikeIcon width={20} height={20} />
                             </div>
-                            <div className="absolute top-[-10px] left-3">
+                            {
+                                showWow && <div className="absolute top-[-10px] left-3">
                                 <WowIcon width={20} height={20} />
                             </div>
+                            }
                         </div>
                         {/* Comment Reaction Functionality */}
                         <span

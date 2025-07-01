@@ -9,7 +9,7 @@ const CheckoutPage = () => {
 
             <div className="mt-[23px]">
                 <p className="text-[#AFB0C0] text-sm font-['Poppins'] mb-1">BROWSE YOUR</p>
-                <h3 className="text-[#24234B] text-2xl font-['Poppins'] font-medium">Checkout</h3>
+                <h3 className="text-[#242n34B] text-2xl font-['Poppins'] font-medium">Checkout</h3>
             </div>
 
             <div className="flex justify-between mt-[25px]">
