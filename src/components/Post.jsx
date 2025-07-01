@@ -20,7 +20,7 @@ import {
 } from "react-icons/hi";
 import Comment from "./Comment";
 
-const Post = ({ hasVideo, hasImage, hasParticipants }) => {
+const Post = ({ hasVideo, hasImage, hasParticipants, multipleImage }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showReactions, setShowReactions] = useState(false);
     const [reactionName, setReactionName] = useState(null);
@@ -149,7 +149,18 @@ const Post = ({ hasVideo, hasImage, hasParticipants }) => {
                             This is a dream come true, thanks to all for the support!!!
                         </p>
 
-                        {hasImage && (
+                        {
+                            multipleImage && (
+                                <div className="flex flex-wrap gap-[13px] justify-between px-5 mt-[17px]">
+                                    <img src="/post-multi-image.png" alt="Post Multiple Image" />
+                                    <img src="/post-multi-image.png" alt="Post Multiple Image" />
+                                    <img src="/post-multi-image.png" alt="Post Multiple Image" />
+                                    <img src="/more-images.png" alt="More Images" />
+                                </div>
+                            )
+                        }
+
+                        {(!multipleImage && hasImage) && (
                             <div className="mt-[15px]">
                                 <img src="/post-image.png" alt="Post Image" />
                             </div>

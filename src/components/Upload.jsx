@@ -106,6 +106,7 @@ const Upload = () => {
 
                             {/* Category Dropdown */}
                             <div ref={categoryRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <select className="hidden" value={selectedCategory}></select>
                                 <div
                                     onClick={() => toggleDropdown("category")}
                                     className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
@@ -149,6 +150,7 @@ const Upload = () => {
 
                             {/* Color Dropdown */}
                             <div ref={colorRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <select className="hidden" value={selectedColor}></select>
                                 <div
                                     onClick={() => toggleDropdown("color")}
                                     className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
@@ -192,6 +194,7 @@ const Upload = () => {
 
                             {/* Size Dropdown */}
                             <div ref={sizeRef} className="relative w-[265px] text-[12px] font-['Inter']">
+                                <select className="hidden" value={selectedSize}></select>
                                 <div
                                     onClick={() => toggleDropdown("size")}
                                     className="h-[30px] w-full px-[10px] py-[7.5px] border border-[#D9D9D9] rounded-[5px] flex items-center justify-between cursor-pointer"
