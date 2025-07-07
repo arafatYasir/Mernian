@@ -2,12 +2,14 @@ import { useState } from "react";
 import Product from "../components/Product";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
-import { FaStar } from "react-icons/fa";
+import { FaAngleDown, FaStar } from "react-icons/fa";
 import SearchIcon2 from "../icons/SearchIcon2"
 import Pagination from "../components/Pagination";
 
 const ProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortBy1, setSortBy1] = useState("Date Published");
+    const [sortBy2, setSortBy2] = useState("Descending");
 
     const products = [
         { id: 1, name: "Intel Pentium G6400 10th Gen Special Deal PC", type: "PC", price: 12 },
@@ -102,7 +104,7 @@ const ProductsPage = () => {
             </div>
 
             {/* Search and Filters */}
-            <div className="mt-[50px]">
+            <div className="mt-[50px] flex justify-between">
                 <div className="flex gap-3">
                     <div>
                         <input className="w-[300px] h-[45px] border border-[#D9D9D9] rounded-[15px] outline-none py-[9.5px] pl-[15px] text-[17px] font-medium font-['Poppins'] placeholder:text-[#D9D9D9]" type="text" placeholder="Search items" />
@@ -113,6 +115,35 @@ const ProductsPage = () => {
                 </div>
 
                 {/* Put the dropdown here as per my design */}
+                <div className="relative">
+                    <select
+                        className="w-[300px] h-[45px] border border-[#D9D9D9] rounded-[15px] outline-none px-[20px] py-[9.5px] text-[17px] font-medium font-['Poppins'] appearance-none"
+                        value={sortBy1}
+                        onChange={(e) => setSortBy1(e.target.value)}
+                    >
+                        <option value="Date Published">Date Published</option>
+                        <option value="Title">Title</option>
+                        <option value="Popularity">Popularity</option>
+                        <option value="Views">Views</option>
+                        <option value="Likes">Likes</option>
+                        <option value="Author Name">Author Name</option>
+                    </select>
+                    <FaAngleDown className="text-2xl absolute top-1/2 right-[20px] -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                <div className="relative">
+                    <select
+                        className="w-[300px] h-[45px] border border-[#D9D9D9] rounded-[15px] outline-none px-[20px] py-[9.5px] text-[17px] font-medium font-['Poppins'] appearance-none"
+                        value={sortBy2}
+                        onChange={(e) => setSortBy2(e.target.value)}
+                    >
+                        <option value="Ascending">Ascending</option>
+                        <option value="Descending">Descending</option>
+                    </select>
+                    <FaAngleDown className="text-2xl absolute top-1/2 right-[20px] -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                <button className="px-4 py-[11px] text-white text-sm font-['Poppins'] font-medium bg-[#615DFA] rounded-[7px]">Apply Filters</button>
             </div>
 
             {/* Products & Sidebar */}
