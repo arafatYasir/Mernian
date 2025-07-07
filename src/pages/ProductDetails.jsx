@@ -1,7 +1,12 @@
 import { FaStar } from "react-icons/fa";
 import BlueArrowIcon from "../icons/BlueArrowIcon";
+import Slider from "../components/Carousel";
+import Carousel from "../components/Carousel";
 
 const ProductDetails = () => {
+    
+    
+
     return (
         <div className="w-[1185px] mt-9 font-['Poppins'] mb-20">
             <div>
@@ -16,24 +21,7 @@ const ProductDetails = () => {
             {/* Carousel & Pricing */}
             <div className="flex justify-between mt-[23px] gap-3">
                 {/* Carousel */}
-                <div className="flex items-center gap-[10px]">
-                    <div className="flex items-center flex-col gap-1.5">
-                        <button className="px-[19px] py-[8.5px] bg-[#FEFEFE] rounded-[5px] cursor-pointer ">
-                            <BlueArrowIcon />
-                        </button>
-                        <div className="space-y-1.5">
-                            <img src="/carousel-preview.png" alt="Carousel Preview Image" />
-                            <img src="/carousel-preview.png" alt="Carousel Preview Image" />
-                            <img src="/carousel-preview.png" alt="Carousel Preview Image" />
-                        </div>
-                        <button className="px-[19px] py-[8.5px] bg-[#FEFEFE] rounded-[5px] cursor-pointer rotate-180">
-                            <BlueArrowIcon />
-                        </button>
-                    </div>
-                    <div>
-                        <img className="w-[830px]" src="/carousel-image.png" alt="Carousel Image" />
-                    </div>
-                </div>
+                <Carousel />
 
                 {/* Pricing */}
                 <div className="bg-white rounded-[15px] w-[284px] h-[296px] px-[27.5px] py-[30px]">
